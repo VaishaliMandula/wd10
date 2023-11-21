@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration Form</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+  <form id="registrationForm">
+    <h1 style="color: red"><center>Registration Form</center></h1>
+<table cellspacing="2" cellpadding="20" align="center">
+   <tr><th><label for="name">Name:</label></th>
+    <td><input type="text" id="name" name="name" required><br></td></tr>
+
+    <tr><th><label for="email">Email:</label></th>
+    <td><input type="email" id="email" name="email" required><br></td></tr>
+
+    <tr><th><label for="password">Password:</label></th>
+    <td><input type="password" id="password" name="password" required><br></td></tr>
+
+    <tr><th><label for="dob">Dob:</label></th>
+    <td><input type="date" id="dob" name="dob" required><br></td></tr>
+    <tr><th><label for="acceptedTerms">Accepted terms?</label></th>
+    <td><input type="checkbox" id="acceptedTerms" name="acceptedTerms" required><br></td></tr>
+
+    <tr><th><button type="submit" onclick="submitForm()">Submit</button></th></tr></table>
+    <table id="userTable" cellspacing="20" align="center">
+        <thead
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Password</th>
+            <th>Dob</th>
+            <th>Accepted terms?</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+  </form>
+
+  <script>
+    function submitForm() {
+      
+      var name = document.getElementById('name').value;
+      var email = document.getElementById('email').value;
+      var password = document.getElementById('password').value;
+      var dob = document.getElementById('dob').value;
+      var acceptedTerms = document.getElementById('acceptedTerms').checked;
+
+      
+      var table = document.getElementById('userTable').getElementsByTagName('tbody')[0];
+      var newRow = table.insertRow(table.rows.length);
+      var cell1 = newRow.insertCell(0);
+      var cell2 = newRow.insertCell(1);
+      var cell3 = newRow.insertCell(2);
+      var cell4 = newRow.insertCell(3);
+      var cell5 = newRow.insertCell(4);
+
+  
+      cell1.innerHTML = name;
+      cell2.innerHTML = email;
+      cell3.innerHTML = password;
+      cell4.innerHTML = dob;
+      cell5.innerHTML = acceptedTerms ? 'Yes' : 'No';
+
+    
+      document.getElementById('name').value = '';
+      document.getElementById('email').value = '';
+      document.getElementById('password').value = '';
+      document.getElementById('dob').value = '';
+      document.getElementById('acceptedTerms').checked = false;
+    }
+  </script>
+
+</body>
+</html>
